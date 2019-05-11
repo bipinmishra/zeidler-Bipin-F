@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="text-center pt-5 mb-2 ">Select Your Holiday </h1>
+  <p class="text-center mb-5">Select Holiday list from <b>United States, Great Britain, France, Germany, Indonesia</b>
+  </p>
+  <div class="row">
+    <div class="col-sm-6">
+      <label for="exampleFormControlSelect1">Select a Country</label>
+      <div class="btn-group select-group" dropdown #dropdown="bs-dropdown" [insideClick]="true">
+        <div class="select-button" dropdownToggle> {{currentSelceted}} </div>
+        <div class="hr-block error" *ngIf="errorMsg"> Please Select allowed Country</div>
+        <div *dropdownMenu class="select-box">
+          <input type="text" id="myInput" class="form-control rounded-0 search_input" (input)="filterFunction()"
+            placeholder="Search for names.." title="Type in a name">
+          <ul id="myUL" class="list-holder">
+            <li *ngFor="let country of countryListName "
+              (click)="optionSelected(country.name, country.alpha); dropdown.hide()"><a> {{country.name}} </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Select a Year</label>
+        <select class="form-control rounded-0" id="exampleFormControlSelect1"
+          (change)="selectYear($event.target.value)">
+          <option disabled>Select any option </option>
+          <option *ngFor="let year of YearList; let i = index; " value="{{year}}">{{year}} </option>
+        </select>
+        <div class="hr-block error" *ngIf="errorMsg2"> Please Select a year</div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info btn-lg  mr-auto  ml-auto d-block mt-4 mb-4" (click)="getHoliday();">Get Holiday </button>
+  <div class="pos-relative" *ngIf="dataLoading">
+    <p class="text-center  loader-msg"> Data is loading Please Wait......</p>
+  </div>
+  <div class="holiday-wrapper mt-5">
+    <h4>Holiday list</h4>
+    <h6 class="mb-3" *ngFor="let holy of holidayData ">{{holy.data}}</h6>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background: #e2e2e2;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.login-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-area {
+  max-width: 400px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.select-button {
+  padding: 5px 15px;
+  background: #fff;
+  color: #aba1a1;
+  position: relative;
+
+  &:after {
+    content: '▼';
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    font-size: 12px;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  position: absolute;
+}
+
+.select-group {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+
+  .select-box {
+    display: none;
+
+    .search_input {
+      padding-left: 40px;
+      background: #fff url(assets/img/search.png) no-repeat;
+      background-position-x: 10px;
+      background-position-y: 5px;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    .list-holder {
+      max-height: 350px;
+      overflow: hidden;
+      overflow-y: auto;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-top: 0px solid transparent;
+    }
+
+    li {
+      display: block;
+      padding: 5px 15px;
+
+      &:hover {
+        background: #ccc;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.open {
+    .select-box {
+      display: block;
+      position: absolute;
+      width: 100%;
+      z-index: 9;
+    }
+  }
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.loader-msg {
+  position: absolute;
+  width: 100%;
+}
